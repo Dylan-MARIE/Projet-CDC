@@ -1,7 +1,19 @@
-h1, div{
+div{
     display:flex;
     justify-content: center;
     padding:10px;
+}
+
+p{
+
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
+  background-color: #353535;
+  color:white;
+  padding:10px;
+  font-size:25px;
+
 }
 
 .bouton_chouette{
