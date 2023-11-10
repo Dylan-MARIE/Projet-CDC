@@ -1,0 +1,44 @@
+h1, div{
+    display:flex;
+    justify-content: center;
+    padding:10px;
+}
+
+.bouton_chouette{
+    background-color: #e9e9ed;
+    border: 0.2px solid #8f8f9d;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    border:none;
+    color:white;
+    background-color:#353535;
+    margin-right:2px;
+}
+
+.bouton_cul{
+    background-color: #e9e9ed;
+    border: 0.2px solid #8f8f9d;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    border:none;
+    color:white;
+    background-color:#9b443f;
+    margin-left:2px;
+    }
+
+    /* CSS pour l'effet de vibration */
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(2px, 2px); }
+  75% { transform: translate(-2px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+.vibrating {
+  animation: vibrate 0.2s linear infinite;
+}
