@@ -5,7 +5,6 @@ div{
 }
 
 p{
-
   justify-content: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-transform: uppercase;
@@ -13,7 +12,6 @@ p{
   color:white;
   padding:10px;
   font-size:25px;
-
 }
 
 .bouton_chouette{
@@ -48,9 +46,14 @@ p{
   25% { transform: translate(-2px, -2px); }
   50% { transform: translate(2px, 2px); }
   75% { transform: translate(-2px, -2px); }
-  100% { transform: translate(2px, 2px); }
+  200% { transform: translate(2px, 2px); }
 }
 
 .vibrating {
-  animation: vibrate 0.2s linear infinite;
+  animation: vibrate 0.3s linear infinite;
+}
+
+.newdes{
+  width:100px;
+  height:100px;
 }
