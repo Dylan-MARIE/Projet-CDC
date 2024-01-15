@@ -1,114 +1,156 @@
-function lancerDé() {
+//Interface de Node
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+//Génération des dés
+function LaunchDice(){
   return Math.floor(Math.random() * 6) + 1;
 }
 
-//Variables dés
-let de1 = lancerDé();
-let de2 = lancerDé();
-let de3 = lancerDé();
+//Variable score total hors de la boucle pour éviter qu'elle ne se réinitialise
+let total = 0;
 
-//Variables
-let total=0;
+//Génération de la boucle
+function Game(){
 
-//Fonctions
-function maxDe(de1, de2, de3){
-  return Math.max(de1, de2, de3);
-}
+  //Lancement des deux premiers dés
+  let dice1 = LaunchDice();
+  let dice2 = LaunchDice();
+  console.log(`\n${dice1}\n\n${dice2}`);
 
-function checkCombinaisons(type){
-  switch (type){
-    case 'chouette' :
-      return (de1 === de2 || de2 === de3 || de1 === de3) && (de1 !== de2 || de2 !== de3);
-    case 'velute' :
-      return (de1 + de2 === de3) || (de2 + de3 === de1) || (de1 + de3 === de2);
-    case 'cdc' :
-      return de1 === de2 && de2 === de3;
-    case 'cv' :
-      return Velute(de1, de2, de3) && Chouette(de1, de2, de3);
-    case 'suite' :
-      let des = [de1, de2, de3];
-      des.sort((a, b) => a - b);
-      return ((des[0] + 1 === des[1] && des[1] + 1 === des[2]) || (des[2] - 1 === des[1] && des[1] - 1 === des[0]));
-    case 'neant' :
-      return !CulDeChouette(de1, de2, de3)
-          && !Chouette(de1, de2, de3)
-          && !Velute(de1, de2, de3)
-          && !ChouetteVelute(de1, de2, de3)
-          && !Suite(de1, de2, de3);
-    default:break
+  //Lancement du troisième dé si on appuie sur Enter
+  rl.question('', () => {
+    let dice3 = LaunchDice();
+    console.log(`${dice3}\n`);
+
+  //Fonction qui permet de sélectionner le dé qui a la plus grande valeur
+  function MaxDice(dice1, dice2, dice3){
+    return Math.max(dice1, dice2, dice3);
   }
-}
 
-function CulDeChouette(de1, de2, de3){
-  if (checkCombinaisons('cdc')){
-    let combinaison = maxDe(de1, de2, de3);
-    valeur = 40 + 10 * combinaison;
-    return ["Cul de chouette", `+ \x1b[36m${valeur}\x1b[0m points.`];
-  }
-}
-
-function Chouette(de1, de2, de3){
-  if (checkCombinaisons('chouette')){
-    let combinaison = (de1 === de2) ? de1 : (de1 === de3) ? de1 : de2;
-    valeur = combinaison**2; 
-    return ["Chouette", `+ \x1b[36m${valeur}\x1b[0m points.`];
-  }
-}
-
-function Velute(de1, de2, de3){
-  if (checkCombinaisons('velute')){
-    let combinaison = maxDe(de1, de2, de3);
-    valeur = 2 * (combinaison ** 2);
-    return ["Velute", `+ \x1b[36m${valeur}\x1b[0m points.`];
-  }
-}
-
-function ChouetteVelute(de1, de2, de3){
-  if (checkCombinaisons('cv')){
-    let combinaison = maxDe(de1, de2, de3);
-    valeur = 2 * (combinaison ** 2);
-    return ["Chouette-Velute", `+ \x1b[36m${valeur}\x1b[0m points.`];
-  }
-}
-
-function Suite(de1, de2, de3){
-  if (checkCombinaisons('suite')){
-    return ["Suite"];
-  }
-}
-
-function Neant(de1, de2, de3){
-  if (checkCombinaisons('neant')){
-    return ["Néant"];
-  }
-  
-}
-console.log(`Dés: ${de1}, ${de2}, ${de3}`);
-
-// Appel de la fonction combinaison
-
-function combinaison(de1, de2, de3){
-  let tab=[];
-  if(CulDeChouette(de1, de2, de3)){
-    tab=CulDeChouette(de1, de2, de3); 
-  }else if(ChouetteVelute(de1, de2, de3)){
-    tab=ChouetteVelute(de1, de2, de3);
-  }else if(Chouette(de1, de2, de3)){
-    tab=Chouette(de1, de2, de3);
-  }else if(Velute(de1, de2, de3)){
-    tab=Velute(de1, de2, de3);
-  }else if(Suite(de1, de2, de3)){
-    tab=Suite(de1, de2, de3);
-  }else if(Neant(de1, de2, de3)){
-    tab=Neant(de1, de2, de3);
+  //Fonction centrale qui regroupe chaque condition de chaque combinaison
+  function CheckCombination(type){
+    switch (type){
+      case 'chouette' :
+        return (dice1 === dice2 || dice2 === dice3 || dice1 === dice3) && (dice1 !== dice2 || dice2 !== dice3);
+      case 'velute' :
+        return (dice1 + dice2 === dice3) || (dice2 + dice3 === dice1) || (dice1 + dice3 === dice2);
+      case 'cdc' :
+        return dice1 === dice2 && dice2 === dice3;
+      case 'cv' :
+        return Velute(dice1, dice2, dice3) && Chouette(dice1, dice2, dice3);
+      case 'suite' :
+        let dices = [dice1, dice2, dice3];
+        dices.sort((a, b) => a - b);
+        return ((dices[0] + 1 === dices[1] && dices[1] + 1 === dices[2]) || (dices[2] - 1 === dices[1] && dices[1] - 1 === dices[0]));
+      case 'neant' :
+        return !CulDeChouette(dice1, dice2, dice3)
+            && !Chouette(dice1, dice2, dice3)
+            && !Velute(dice1, dice2, dice3)
+            && !ChouetteVelute(dice1, dice2, dice3)
+            && !Suite(dice1, dice2, dice3);
+      default:break
     }
+  }
 
-  return tab;
+  //Fonction centrale qui retourne un tableau contenant le nom de la combinaison et les points obtenus selon la combinaison obtenue
+  function Combination(dice1, dice2, dice3){
+    let tab=[];
+    if(CulDeChouette(dice1, dice2, dice3)){
+      tab=CulDeChouette(dice1, dice2, dice3); 
+    }else if(ChouetteVelute(dice1, dice2, dice3)){
+      tab=ChouetteVelute(dice1, dice2, dice3);
+    }else if(Chouette(dice1, dice2, dice3)){
+      tab=Chouette(dice1, dice2, dice3);
+    }else if(Velute(dice1, dice2, dice3)){
+      tab=Velute(dice1, dice2, dice3);
+    }else if(Suite(dice1, dice2, dice3)){
+      tab=Suite(dice1, dice2, dice3);
+    }else if(Neant(dice1, dice2, dice3)){
+      tab=Neant(dice1, dice2, dice3);
+      }
+    return tab;
+  }
+
+  //Fonction du Cul de Chouette
+  function CulDeChouette(dice1, dice2, dice3){
+    if (CheckCombination('cdc')){
+      let combination = MaxDice(dice1, dice2, dice3);
+      value = 40 + 10 * combination;
+      return [`Cul de Chouette de \x1b[31m${combination}\x1b[0m.`, `+ \x1b[36m${value}\x1b[0m points.`];
+    }
+  }
+
+  //Fonction de la Chouette
+  function Chouette(dice1, dice2, dice3){
+    if (CheckCombination('chouette')){
+      let combination = (dice1 === dice2) ? dice1 : (dice1 === dice3) ? dice1 : dice2;
+      value = combination**2; 
+      return [`Chouette de \x1b[31m${combination}\x1b[0m.`, `+ \x1b[36m${value}\x1b[0m points.`];
+    }
+  }
+
+  //Fonction de la Velute
+  function Velute(dice1, dice2, dice3){
+    if (CheckCombination('velute')){
+      let combination = MaxDice(dice1, dice2, dice3);
+      value = 2 * (combination ** 2);
+      return [`Velute de \x1b[31m${combination}\x1b[0m.`, `+ \x1b[36m${value}\x1b[0m points.`];
+    }
+  }
+
+  //Fonction de la Chouette-Velute
+  function ChouetteVelute(dice1, dice2, dice3){
+    if (CheckCombination('cv')){
+      let combination = MaxDice(dice1, dice2, dice3);
+      value = 2 * (combination ** 2);
+      return [`Chouette-Velute de \x1b[31m${combination}\x1b[0m.`, `+ \x1b[36m${value}\x1b[0m points.`];
+    }
+  }
+
+  //Fonction de la Suite
+  function Suite(dice1, dice2, dice3){
+    if (CheckCombination('suite')){
+      value = 0;
+      return ["Suite."];
+    }
+  }
+
+  //Fonction du Néant
+  function Neant(dice1, dice2, dice3){
+    if (CheckCombination('neant')){
+      value = 0;
+      return ["Néant."];
+    }
+  }
+
+  //Affichage de la combinaison et du nombre de points obtenus ainsi que du score total
+  let value;
+  let result = Combination(dice1, dice2, dice3);
+  console.log(result[0], result[1] ? result[1] : "");
+  total+=value;
+  console.log(`\nVous avez \x1b[36m${total}\x1b[0m points.`);
+
+  //Vérifie que le score total est inférieur à 343. Le cas contraire, met fin à la partie
+  if (total >= 343) {
+    console.log(`\nVous avez gagné la partie !`);
+    rl.close();
+    return;
 }
 
-let resultats = combinaison(de1, de2, de3);
-console.log(resultats[0], resultats[1] ? resultats[1] : "");
+  //Relancement de la boucle
+  rl.question('\nRelancer les dés ?', (answer) => {
+    if(answer === ''){
+      Game();
+    }else{
+      rl.close();
+    }
+  })
+  })
+}
 
-// total+=tab[1];
-// nomCombinaison=tab[0];
-// Afficher total et nom
+Game();
