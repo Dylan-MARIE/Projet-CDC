@@ -85,6 +85,13 @@ function Game(){
     }
   }
 
+  function CuldeChouette2(dice1, dice2, dice3){
+    let result = new Object();
+    result.name="Cul de Chouette";
+    result.score=40+10*Math.max(dice1, dice2, dice3);
+    return dice1==dice2 && dice2==dice3 ? result : false;
+  }
+
   //Fonction de la Chouette
   function Chouette(dice1, dice2, dice3){
     if (CheckCombination('chouette')){
