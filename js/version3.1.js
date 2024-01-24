@@ -16,20 +16,44 @@ function RandomDice(){
 
 let total = 0;
 let stage = 0;
+let locked = false;
 
 function LaunchDice(){
-  if(stage === 0){
-    LaunchChouettes();
-    stage = 1;
-    document.getElementById("launch").innerHTML = "Lancer le cul";
-  }else if(stage === 1){
-    LaunchCul();
-    stage = 2;
-    document.getElementById("launch").innerHTML = "Jet suivant";
-  }else{
-    ResetDice();
-    stage = 0;
-    document.getElementById("launch").innerHTML = "Lancer les chouettes";
+  if (locked) return;
+  switch(stage){
+    case 0:
+      ResetDice();
+      stage = 1;
+      document.getElementById("launch").innerHTML = "Lancer les chouettes";
+      break;
+    case 1:
+      LaunchChouettes();
+      stage = 2;
+      document.getElementById("launch").innerHTML = "Lancer le cul";
+      break;
+    case 2:
+      LaunchCul();
+      stage = 3;
+      document.getElementById("launch").innerHTML = "Jet suivant";
+      break;
+    case 3:
+      ResetDice();
+      if(total < 343){
+        stage = 1;
+        document.getElementById("launch").innerHTML = "Lancer les chouettes";
+      }else{
+        document.getElementById("launch").innerHTML = "Vous avez gagné la partie !";
+        document.getElementById("total").innerHTML = "Vous avez 0 points.";
+        locked = true;
+        setTimeout(() =>{
+          locked = false;
+          stage = 0;
+          total = 0;
+          document.getElementById("launch").innerHTML = "Commencer une partie";
+          document.getElementById("total").innerHTML = "Vous avez 0 points.";
+        }, 2000);
+      }
+      break;
   }
 }
 
