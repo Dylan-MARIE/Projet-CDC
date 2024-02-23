@@ -23,12 +23,11 @@ window.onload = function(){
   
   let total = 0;
   let stage = 0;
-  let locked = false;
+  //let locked = false;
   
   function LaunchDice(){
-    if (locked) return;
-    let chouetteElement = document.querySelector('.test1');
-    chouetteElement.style.backgroundColor = '#353535';
+    //if (locked) return;
+    
     switch(stage){
       case 0:
         ResetDice();
@@ -55,7 +54,7 @@ window.onload = function(){
           document.getElementById("total").innerHTML = "Vous avez 0 points.";
           locked = true;
           setTimeout(() =>{
-            locked = false;
+            //locked = false;
             stage = 0;
             total = 0;
             document.getElementById("launch").innerHTML = "Commencer une partie";
@@ -78,8 +77,8 @@ window.onload = function(){
   }
   
   function LaunchCul() {
+
     let resultatCombinaison = document.getElementById("RealizedCombination");
-    let chouetteElement = document.querySelector('.test1'); // Sélectionnez l'élément Chouette
 
     let dice3 = RandomDice();
     let comb = combinaison(
@@ -88,17 +87,26 @@ window.onload = function(){
         dice3
     );
 
+
+    //alert("comb"+comb.id);
+    //alert("comb"+comb.id);
+
     let diceImage3 = document.getElementById("Dé3");
     diceImage3.src = "assets/images/" + dice3 + ".png";
+
+    document.getElementById("comb"+comb.id).style.backgroundColor = '#6f9457';
+   
 
     if (comb.value !== undefined) {
         resultatCombinaison.innerHTML = `${comb.name} de ${comb.value}. + ${comb.score} points.`;
         total += comb.score;
 
         // Vérifiez si la combinaison est une Chouette
-        if (comb.name === 'Chouette') {
+        /*if (comb.name === 'Chouette') {
             chouetteElement.style.backgroundColor = '#6f9457'; // Changez la couleur en vert pour Chouette
-        }
+        }*/
+        
+        
     } else {
         resultatCombinaison.innerHTML = `${comb.name}.`;
     }
@@ -118,6 +126,11 @@ window.onload = function(){
   
     let resultatCombinaison = document.getElementById("RealizedCombination");
     resultatCombinaison.innerHTML = "";
+
+    const collection = document.getElementsByClassName("comb");
+    for (let i = 0; i < collection.length; i++) {
+      collection[i].style.backgroundColor = "#353535";
+    }
   }
   
   /*************************************
@@ -128,6 +141,7 @@ window.onload = function(){
   function CuldeChouette(dice1, dice2, dice3){
     let result = new Object();
     result.name="Cul de Chouette";
+    result.id=1;
     result.score=40+10*dice1;
     result.value=dice1;
     return dice1===dice2 && dice2===dice3 ? result : false;
@@ -138,6 +152,7 @@ window.onload = function(){
     let combination = (dice1===dice2 && dice1!==dice3) ? dice1 : (dice2===dice3 && dice2 !==dice1) ? dice2 : (dice1===dice3 && dice1!==dice2) ? dice1 : 0;
     let result = new Object();
     result.name="Chouette";
+    result.id=2;
     result.score=combination**2;
     result.value=combination;
     return (dice1===dice2 && dice1!==dice3) || (dice2===dice3 && dice2 !==dice1) || (dice1===dice3 && dice1!==dice2) ? result : false;
@@ -147,6 +162,7 @@ window.onload = function(){
   function Velute(dice1, dice2, dice3){
       let result = new Object();
       result.name="Velute";
+      result.id=3;
       result.score=2*Math.max(dice1, dice2, dice3)**2;
       result.value=Math.max(dice1, dice2, dice3);
       return (dice1 + dice2 === dice3) || (dice2 + dice3 === dice1) || (dice1 + dice3 === dice2) ? result : false;
@@ -156,6 +172,7 @@ window.onload = function(){
   function ChouetteVelute(dice1, dice2, dice3){
     let result = new Object();
     result.name="Chouette-Velute";
+    result.id=4;
     result.score=2*Math.max(dice1, dice2, dice3)**2;
     result.value=Math.max(dice1, dice2, dice3);
     return Chouette(dice1, dice2, dice3) && Velute(dice1, dice2, dice3) ? result : false;
@@ -168,6 +185,7 @@ window.onload = function(){
   
     let result = new Object();
     result.name="Suite";
+    result.id=5;
     result.score=0;
     return dices[1]===dices[0]+1 && dices[2]===dices[1]+1 ? result : false;
   }
@@ -176,6 +194,7 @@ window.onload = function(){
   function Neant(dice1, dice2, dice3){
     let result = new Object();
     result.name="Néant";
+    result.id=6;
     result.score=0;
     return result;
   }
