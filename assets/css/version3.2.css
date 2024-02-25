@@ -141,13 +141,13 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 }    
 
 @keyframes bounce{
-    0%, 20%, 50%, 80%, 100% {
+    0%, 20%, 50%, 80%, 100%{
       transform:translateY(0);
     }
-    40% {
+    40%{
       transform:translateY(-20px);
     }
-    60% {
+    60%{
       transform:translateY(-10px);
     }
   }
@@ -165,25 +165,55 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     width:90px;
 }
 
-.test-combi{
-    display:flex;
-    align-items:end;
-    flex-wrap:wrap;
-    right:20%;
-    font-size: 20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:300px;
+.button{
+    text-align:center;
+    margin:auto;
 }
 
-.test-combi p {
-    margin-bottom: 10px;
+.button #launch{
+    width:250px;
+    background-color:#6f9457;
+    color:#FFFFFF;
+    font-size:20px;
+    padding:10px;   
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    font-family:'UnifrakturCook', sans-serif;
+    border:none;
+    margin-top:15px;
+}
+
+.combinations{
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:360px;
+    padding-left:200px;
+    margin-top:2%;
+    margin-left:25%;
+}
+
+.combinations p{
+    margin-bottom:5px;
     padding:10px;
     background-color:#353535;
-    width:125px;
-    text-align: center;
+    width:150px;
+    height:25px;
+    text-align:center;
     margin-left:5px;
 }
 
-.test-combi .points {
+.combinations .points{
     color:#353535;
+    width:150px;
+}
+
+.combinations #total{
+    background-color:#9b443f;
+}
+
+.combinations #RealizedCombination{
+    background-color:#dda148;
 }
