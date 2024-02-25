@@ -115,7 +115,7 @@ window.onload = function(){
     return dice1===dice2 && dice2===dice3 ? result : false;
   }
   
-   //Fonction de la Chouette
+  //Fonction de la Chouette
   function Chouette(dice1, dice2, dice3){
     let combination = (dice1===dice2 && dice1!==dice3) ? dice1 : (dice2===dice3 && dice2 !==dice1) ? dice2 : (dice1===dice3 && dice1!==dice2) ? dice1 : 0;
     let result = new Object();
