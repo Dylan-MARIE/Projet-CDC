@@ -64,7 +64,9 @@ window.onload = function(){
   }
   
   function LaunchCul(){
+    //ICI
     let resultatCombinaison = document.getElementById("RealizedCombination");
+    //ICI
     let dice3 = RandomDice();
     let comb = combinaison(parseInt(document.getElementById("Dé1").src.substr(-5, 1)),parseInt(document.getElementById("Dé2").src.substr(-5, 1)),dice3);
     let diceImage3 = document.getElementById("Dé3");
@@ -80,6 +82,8 @@ window.onload = function(){
         resultatCombinaison.innerHTML = '';
     }
 
+    let scoreElement = document.getElementById("points" + comb.id);
+    scoreElement.innerHTML = `+ ${comb.score} points`;
     document.getElementById("total").innerHTML = `Total : ${total} points`;
   }
 
@@ -91,14 +95,12 @@ window.onload = function(){
     diceImage1.src = "assets/images/0.png";
     diceImage2.src = "assets/images/0.png";
     diceImage3.src = "assets/images/0.png";
-  
-    let resultatCombinaison = document.getElementById("RealizedCombination");
-    resultatCombinaison.innerHTML = "";
 
-    const collection = document.getElementsByClassName("comb");
-    for(let i = 0; i < collection.length; i++){
-      collection[i].style.backgroundColor = "#353535";
-    }
+    let resetComb = document.querySelectorAll(".comb");
+    resetComb.forEach(element => {element.style.backgroundColor = "#353535";});
+
+    let resetPoints = document.querySelectorAll(".points");
+    resetPoints.forEach(element => {element.innerHTML = "";});
   }
   
   /*************************************
