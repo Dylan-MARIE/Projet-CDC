@@ -59,8 +59,8 @@ window.onload = function(){
     let diceImage1 = document.getElementById("Dé1");
     let diceImage2 = document.getElementById("Dé2");
   
-    diceImage1.src = "assets/images/" + dice1 + ".png";
-    diceImage2.src = "assets/images/" + dice2 + ".png";
+    diceImage1.src = "assets/images/chouette" + dice1 + ".png";
+    diceImage2.src = "assets/images/chouette" + dice2 + ".png";
   }
   
   function LaunchCul(){
@@ -71,7 +71,7 @@ window.onload = function(){
     let comb = combinaison(parseInt(document.getElementById("Dé1").src.substr(-5, 1)),parseInt(document.getElementById("Dé2").src.substr(-5, 1)),dice3);
     let diceImage3 = document.getElementById("Dé3");
     
-    diceImage3.src = "assets/images/" + dice3 + ".png";
+    diceImage3.src = "assets/images/cul" + dice3 + ".png";
 
     document.getElementById("comb"+comb.id).style.backgroundColor = '#6f9457';
    
@@ -92,9 +92,9 @@ window.onload = function(){
     let diceImage2 = document.getElementById("Dé2");
     let diceImage3 = document.getElementById("Dé3");
   
-    diceImage1.src = "assets/images/0.png";
-    diceImage2.src = "assets/images/0.png";
-    diceImage3.src = "assets/images/0.png";
+    diceImage1.src = "assets/images/empty.png";
+    diceImage2.src = "assets/images/empty.png";
+    diceImage3.src = "assets/images/empty.png";
 
     let resetComb = document.querySelectorAll(".comb");
     resetComb.forEach(element => {element.style.backgroundColor = "#353535";});
