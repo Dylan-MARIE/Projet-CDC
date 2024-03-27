@@ -181,7 +181,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     margin-left:320px;
 }
 
-.table{
+.table_titre1{
     display:flex;
     flex-wrap:wrap;
     font-size:20px;
@@ -192,7 +192,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     margin-left:14.5%;
 }
 
-.table p{
+.table_titre1 p{
     margin-bottom:5px;
     padding:10px;
     background-color:#353535;
@@ -202,6 +202,69 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     margin-left:5px;
 }
 
-.table #total{
+.table1{
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:300px;
+    padding-left:200px;
+    margin-top:20px;
+    margin-left:14.5%;
+}
+
+.table1 p{
+    margin-bottom:5px;
+    padding:10px;
+    background-color:#353535;
+    width:200px;
+    height:25px;
+    text-align:center;
+    margin-left:5px;
+}
+
+.table1 #total{
     background-color:#9b443f;
+}
+
+.table_titre2{
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:685px;
+    padding-left:500px;
+    margin-top:-370px;
+    margin-left:14.5%;
+}
+
+.table_titre2 p{
+    margin-bottom:5px;
+    padding:10px;
+    background-color:#353535;
+    width:685px;
+    height:25px;
+    text-align:center;
+    margin-left:5px;
+}
+
+.table2{
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:300px;
+    padding-left:500px;
+    margin-top:20px;
+    margin-left:14.5%;
+}
+
+.table2 p{
+    margin-bottom:5px;
+    padding:10px;
+    background-color:#353535;
+    width:200px;
+    height:25px;
+    text-align:center;
+    margin-left:5px;
 }
