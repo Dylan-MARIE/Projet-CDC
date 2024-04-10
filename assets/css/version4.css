@@ -158,7 +158,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 
 .dices{
     text-align:center;
-    margin-top:-85px;
+    margin-top:-95px;
 }
   
 .dices img{
@@ -166,266 +166,189 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 }
 
 .button #launch{
-    width:250px;
-    background-color:#6f9457;
     color:#FFFFFF;
+    background-color:#6f9457;
+    font-family:'UnifrakturCook', sans-serif;
+    cursor:pointer;
+    border:none;
     font-size:20px;
     padding:20px;   
-    margin:auto;
+    width:250px;
+    margin:50px 15px 15px 250px;
+}
+
+.combinaisons{
+    font-family:'UnifrakturCook', sans-serif;
+    font-size:20px;
+    margin-top:45px;
+    margin-left:250px;
+}
+
+.combinaisons p{
+    background-color:#dda148;
+    cursor:default;
     display:flex;
     justify-content:center;
-    font-family:'UnifrakturCook', sans-serif;
-    border:none;
-    margin:15px;
-    margin-top:50px;
-    margin-left:320px;
-}
-
-.table_titre1{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:490px;
-    padding-left:200px;
-    margin-top:5%;
-    margin-left:14.5%;
-}
-
-.table_titre1 p{
-    margin-bottom:5px;
+    align-items:center;
     padding:20px;
-    background-color:#353535;
-    width:490px;
+    width:445px;
     height:25px;
-    text-align:center;
-    margin-left:5px;
-    background-color: #6f9457;
 }
 
 .table1{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
     font-family:'UnifrakturCook', sans-serif;
-    width:300px;
-    padding-left:200px;
-    margin-top:20px;
-    margin-left:14.5%;
+    font-size:20px;
+    margin-top:25px;
+    margin-left:245px;
 }
 
 .table1 p{
-    margin-bottom:5px;
-    padding:20px;
     background-color:#353535;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:5px;
+    margin-left:5px;
+    padding:20px;
     width:200px;
     height:25px;
-    text-align:center;
-    margin-left:5px;
-}
-
-.table1 #total{
-    background-color:#9b443f;
-}
-
-.table_titre2{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:245px;
-    padding-left:710px;
-    margin-top:-300px;
-    margin-left:14.5%;
-}
-
-.table_titre2 p{
-    margin-bottom:5px;
-    padding:20px;
-    background-color:#353535;
-    width:490px;
-    height:25px;
-    text-align:center;
-    margin-left:5px;
-    background-color: #6f9457;
 }
 
 .table2{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
     font-family:'UnifrakturCook', sans-serif;
-    width:300px;
-    padding-left:710px;
-    margin-top:20px;
-    margin-left:14.5%;
+    font-size:20px;
+    margin-top:-210px;
+    margin-left:490px;
 }
 
 .table2 p{
-    margin-bottom:5px;
-    padding:20px;
     background-color:#353535;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:5px;
+    margin-left:5px;
+    padding:20px;
     width:200px;
     height:25px;
-    text-align:center;
+}
+
+.combinaison_resultat{
+    font-family:'UnifrakturCook', sans-serif;
+    display:flex;
+    flex-wrap:nowrap;
+    font-size:20px;
+    margin-top:25px;
+    margin-left:245px;
+}
+
+.combinaison_resultat p{
+    background-color:#353535;
+    cursor:default;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:5px;
     margin-left:5px;
+    padding:20px;
+    width:200px;
+    height:25px;
+}
+
+.actions_defis{
+    font-family:'UnifrakturCook', sans-serif;
+    font-size:20px;
+    margin-top:-390px;
+    margin-left:760px;
+}
+
+.actions_defis p{
+    background-color:#4682b4;
+    cursor:default;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    width:200px;
+    height:25px;
 }
 
 .table3{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
     font-family:'UnifrakturCook', sans-serif;
-    width:300px;
-    padding-left:710px;
-    margin-top:0px;
-    margin-left:14.5%;
+    font-size:20px;
+    margin-top:25px;
+    margin-left:755px;
 }
 
 .table3 p{
+    background-color:#353535;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     margin-bottom:5px;
-    padding:20px;
-    background-color:#353535;
-    width:200px;
-    height:25px;
-    text-align:center;
     margin-left:5px;
-}
-
-.table4{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:300px;
-    padding-left:710px;
-    margin-top:0px;
-    margin-left:14.5%;
-}
-
-.table4 p{
-    margin-bottom:5px;
     padding:20px;
-    background-color:#353535;
     width:200px;
     height:25px;
-    text-align:center;
-    margin-left:5px;
 }
 
-.table5{
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
+.bevue{
     font-family:'UnifrakturCook', sans-serif;
-    width:300px;
-    padding-left:445px;
-    margin-top:-210px;
-    margin-left:14.5%;
-}
-
-.table5 p{
-    margin-bottom:5px;
-    padding:20px;
-    background-color:#353535;
-    width:200px;
-    height:25px;
-    text-align:center;
-    margin-left:5px;
-}
-
-.table6{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    display:flex;
-    flex-wrap:wrap;
     font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:300px;
-    padding-left:960px;
-    margin-top:20px;
-}
-
-.table6 p{
-    background-color: #353535;
-    padding:20px;
-    background-color:#353535;
-    width:200px;
-    height:25px;
-    text-align:center;
-}
-
-.table_titre3{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:100px;
-    padding-left:1255px;
-    margin-top:-385px;
-}
-
-.table_titre3 p{
-    background-color: #353535;
-    padding:20px;
-    background-color:#353535;
-    width:100px;
-    height:25px;
-    text-align:center;
-    background-color: #6f9457;
-}
-
-.table7{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:100px;
-    padding-left:1255px;
     margin-top:25px;
+    margin-left:755px;
 }
 
-.table7 p{
-    background-color: #353535;
-    padding:20px;
+.bevue p{
     background-color:#353535;
+    cursor:default;
     display:flex;
-    align-items: center;
-    justify-content: center;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:5px;
+    margin-left:5px;
+    padding:20px;
+    width:200px;
+    height:25px;
+}
+
+.total{
+    font-family:'UnifrakturCook', sans-serif;
+    font-size:20px;
+    margin-top:-390px;
+    margin-left:1025px;
+}
+
+.total p{
+    background-color:#9b443f;
+    cursor:default;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    width:100px;
+    height:25px;
+}
+
+.total_score{
+    font-family:'UnifrakturCook', sans-serif;
+    font-size:20px;
+    margin-top:25px;
+    margin-left:1020px;
+}
+
+.total_score p{
+    background-color:#353535;
+    cursor:default; 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:5px;
+    margin-left:5px;
+    padding:20px;
     width:100px;
     height:255px;
-    text-align:center;
-}
-
-.table8{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    display:flex;
-    flex-wrap:wrap;
-    font-size:20px;
-    font-family:'UnifrakturCook', sans-serif;
-    width:445px;
-    padding-left:205px;
-    margin-top:-65px;
-    margin-left:14.5%;
-}
-
-.table8 p{
-    background-color: #353535;
-    padding:20px;
-    background-color:#353535;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width:445px;
-    height:25px;
-    text-align:center;
 }

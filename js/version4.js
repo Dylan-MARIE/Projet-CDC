@@ -59,7 +59,7 @@ function LaunchDice1(){
   let dice1 = RandomDice();
 
   //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
-  document.getElementById("Dé1").src = "assets/images/chouette" + dice1 + ".png";
+  document.getElementById("Dé1").src = "assets/images/dice" + dice1 + ".png";
 }
 
 function LaunchDice2(){
@@ -67,7 +67,7 @@ function LaunchDice2(){
   let dice2 = RandomDice();
 
   //Utilise les valeurs récupérées par les dés 1 et 2 pour les transposer au travers d'images de dés
-  document.getElementById("Dé2").src = "assets/images/chouette" + dice2 + ".png";
+  document.getElementById("Dé2").src = "assets/images/dice" + dice2 + ".png";
 }
 
 function LaunchDice3(){
@@ -76,7 +76,7 @@ function LaunchDice3(){
   let comb = combinaison(parseInt(document.getElementById("Dé1").src.substr(-5, 1)),parseInt(document.getElementById("Dé2").src.substr(-5, 1)),dice3);
   let diceImage3 = document.getElementById("Dé3");
   
-  diceImage3.src = "assets/images/cul" + dice3 + ".png";
+  diceImage3.src = "assets/images/dice" + dice3 + ".png";
 
   // Rendre les blocs correspondants cliquables
   let combBlocks = document.querySelectorAll(".comb");
