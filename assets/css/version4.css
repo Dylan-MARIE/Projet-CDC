@@ -336,27 +336,96 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 
 .table6{
     display: flex;
-    flex-direction: column; /* Empiler les éléments les uns sous les autres */
-    align-items: center; /* Aligner horizontalement au centre */
+    flex-direction: column;
+    align-items: center;
     display:flex;
     flex-wrap:wrap;
     font-size:20px;
     font-family:'UnifrakturCook', sans-serif;
     width:300px;
-    padding-left:950px;
-    margin-top:-300px;
-    margin-left:14.5%;
+    padding-left:960px;
+    margin-top:20px;
 }
 
 .table6 p{
-
-    writing-mode: vertical-lr;
-    text-orientation: upright;
     background-color: #353535;
     padding:20px;
     background-color:#353535;
-    width:30px;
+    width:200px;
+    height:25px;
+    text-align:center;
+}
+
+.table_titre3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:100px;
+    padding-left:1255px;
+    margin-top:-385px;
+}
+
+.table_titre3 p{
+    background-color: #353535;
+    padding:20px;
+    background-color:#353535;
+    width:100px;
+    height:25px;
+    text-align:center;
+    background-color: #6f9457;
+}
+
+.table7{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:100px;
+    padding-left:1255px;
+    margin-top:25px;
+}
+
+.table7 p{
+    background-color: #353535;
+    padding:20px;
+    background-color:#353535;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100px;
     height:255px;
     text-align:center;
-    margin-left:-170px;
+}
+
+.table8{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display:flex;
+    flex-wrap:wrap;
+    font-size:20px;
+    font-family:'UnifrakturCook', sans-serif;
+    width:445px;
+    padding-left:205px;
+    margin-top:-65px;
+    margin-left:14.5%;
+}
+
+.table8 p{
+    background-color: #353535;
+    padding:20px;
+    background-color:#353535;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:445px;
+    height:25px;
+    text-align:center;
 }
