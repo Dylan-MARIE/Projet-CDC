@@ -19,37 +19,36 @@ return Math.ceil(Math.random() * 6);
 }
 
 function LaunchDices(){
-    //alert();
     switch(stage){
         case 0:
             ResetDice();
             stage = 1;
-            document.getElementById("launch").innerHTML = "Lancer les chouettes";
+            document.getElementById("start").innerHTML = "Lancer les chouettes";
         break;
         case 1:
-            dés[0]=LaunchDice(1);
-            dés[1]=LaunchDice(2);
+            dés[0] = LaunchDice(1);
+            dés[1] = LaunchDice(2);
             stage = 2;
-            document.getElementById("launch").innerHTML = "Lancer le cul";
+            document.getElementById("start").innerHTML = "Lancer le cul";
         break;
         case 2:
-            dés[2]=LaunchDice(3);
-            Verif();
+            dés[2] = LaunchDice(3);
+            Check();
             stage = 3;
-            document.getElementById("launch").innerHTML = "Jet suivant";
+            document.getElementById("start").innerHTML = "Jet suivant";
         break;
         case 3:
             ResetDice();
             if(total < 343){
                 stage = 1;
-                document.getElementById("launch").innerHTML = "Lancer les chouettes";
+                document.getElementById("start").innerHTML = "Lancer les chouettes";
             }else{
-                document.getElementById("launch").innerHTML = "Vous avez gagné la partie !";
+                document.getElementById("start").innerHTML = "Vous avez gagné la partie !";
                 document.getElementById("total").innerHTML = "0";
                 setTimeout(() =>{
                     stage = 0;
                     total = 0;
-                    document.getElementById("launch").innerHTML = "Commencer une partie";
+                    document.getElementById("start").innerHTML = "Commencer une partie";
                     document.getElementById("total").innerHTML = "0";
                 }, 2000);
             }
@@ -57,16 +56,13 @@ function LaunchDices(){
     }
 }
 
-function LaunchDice(num){
-    //Récupère une valeur aléatoire pour les chouettes à partir de la fonction RandomDice
+function LaunchDice(number){
     let dice = RandomDice();
-    
-    //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
-    document.getElementById("Dé"+num).src = "assets/images/dice" + dice + ".png";
+    document.getElementById("Dé"+number).src = "assets/images/dice" + dice + ".png";
     return dice;
 }
 
-function Verif(){
+function Check(){
     let comb = combination(dés[0],dés[1],dés[2]);
 
     //Vérifie qu'une combinaison fait gagner des points et affiche ces points et la combinaison réalisée ainsi qu'un changement de couleur
@@ -83,16 +79,14 @@ function Verif(){
         document.getElementById("points").innerHTML = ``;
         document.getElementById("points").style.backgroundColor = '';
     }
-
-    //Affiche le score total
     document.getElementById("total").innerHTML = `${total}`;
 }
 
 function ResetDice(){
     //Réinitialise la valeur des trois dés en affichant des dés vierges
-    document.getElementById("Dé1").src = "assets/images/empty.png";
-    document.getElementById("Dé2").src = "assets/images/empty.png";
-    document.getElementById("Dé3").src = "assets/images/empty.png";
+    document.getElementById("Dé1").src = "assets/images/dice0.png";
+    document.getElementById("Dé2").src = "assets/images/dice0.png";
+    document.getElementById("Dé3").src = "assets/images/dice0.png";
 
     //Affiche des blocs vierges pour la combinaison effectuée et les points gagnés et réinitialise la couleur
     document.getElementById("combination").innerHTML = ``;
