@@ -38,47 +38,73 @@
 <section id="cul-de-chouette">
     <h1>Cul de Chouette</h1>
     <div class="contenu-cul-de-chouette">
-        <div class="button">
-            <button id="launch" onclick="LaunchDices()">Commencer une partie</button>
-        </div>
         <div class="dices">
             <img id="Dé1" src="assets/images/empty.png" alt="Dé 1">
             <img id="Dé2" src="assets/images/empty.png" alt="Dé 2">
             <img id="Dé3" src="assets/images/empty.png" alt="Dé 3">
         </div>
-        <div class="combinaisons">
-            <p>Combinaisons</p>
+        <div class="button">
+            <button id="launch" onclick="LaunchDices()">Commencer une partie</button>
         </div>
-        <div class="table1">
-            <p>Chouette</p>
-            <p>Velute</p>
-            <p>Chouette-Velute</p>
-        </div>
-        <div class="table2">
-            <p>Cul de Chouette</p>
-            <p>Suite</p>
-            <p>Néant</p>
-        </div>
-        <div class="combinaison_resultat">
-            <p id="combination"></p>
-            <p id="points"></p>
-        </div>
-        <div class="actions_defis">
-            <p>Actions et défis</p>
-        </div>
-        <div class="table3">
-            <p>Sirop</p>
-            <p>Civet</p>
-            <p>Grelottine</p>
-        </div>
-        <div class="bevue">
-            <p>Bévue</p>
-        </div>
-        <div class="total">
-            <p>Total</p>
-        </div>
-        <div class="total_score">
-            <p id="total">0</p>
+        <div id="tableau">
+            <div id="bloc_gauche">
+                <div class="combinaisons">Combinaisons</div>
+                <div class="actions_defis">Actions et défis</div>
+                <div>Chouette</div>
+                <div>Cul de Chouette</div>
+                <div>Sirop</div>
+                <div>Velute</div>
+                <div>Suite</div>
+                <div>Civet</div>
+                <div>Chouette-Velute</div>
+                <div>Néant</div>
+                <div>Grelottine</div>
+                <div id="combination"><!--comb_resultat--></div>
+                <div id="points"><!--comb_score--></div>
+                <div>Bévue</div>
+            </div>
+            <div id="bloc_droit">
+                <div class="total">
+                    Total
+                </div>
+                <div class="total_score">
+                    0
+                </div>
+            </div>
+            <!--<div class="combinaisons">
+                <p>Combinaisons</p>
+            </div>
+            <div class="table1">
+                <p>Chouette</p>
+                <p>Velute</p>
+                <p>Chouette-Velute</p>
+            </div>
+            <div class="table2">
+                <p>Cul de Chouette</p>
+                <p>Suite</p>
+                <p>Néant</p>
+            </div>
+            <div class="combinaison_resultat">
+                <p id="combination"></p>
+                <p id="points"></p>
+            </div>
+            <div class="actions_defis">
+                <p>Actions et défis</p>
+            </div>
+            <div class="table3">
+                <p>Sirop</p>
+                <p>Civet</p>
+                <p>Grelottine</p>
+            </div>
+            <div class="bevue">
+                <p>Bévue</p>
+            </div>
+            <div class="total">
+                <p>Total</p>
+            </div>
+            <div class="total_score">
+                <p id="total">0</p>
+            </div>-->
         </div>
     </div>
 </section>

@@ -158,7 +158,6 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 
 .dices{
     text-align:center;
-    margin-top:-95px;
 }
   
 .dices img{
@@ -174,17 +173,26 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     font-size:20px;
     padding:20px;   
     width:250px;
-    margin:50px 15px 15px 250px;
+    display:block;
+    margin:auto;
 }
 
-.combinaisons{
+#bloc_gauche div{
     font-family:'UnifrakturCook', sans-serif;
     font-size:20px;
-    margin-top:45px;
-    margin-left:250px;
+    background-color:#353535;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    width:200px;
+    height:25px;
 }
 
-.combinaisons p{
+#bloc_gauche .combinaisons{
+    font-family:'UnifrakturCook', sans-serif;
+    font-size:20px;
     background-color:#dda148;
     cursor:default;
     display:flex;
@@ -195,76 +203,24 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     height:25px;
 }
 
-.table1{
-    font-family:'UnifrakturCook', sans-serif;
-    font-size:20px;
-    margin-top:25px;
-    margin-left:245px;
-}
-
-.table1 p{
-    background-color:#353535;
-    cursor:pointer;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:5px;
-    margin-left:5px;
-    padding:20px;
-    width:200px;
-    height:25px;
-}
-
-.table2{
-    font-family:'UnifrakturCook', sans-serif;
-    font-size:20px;
-    margin-top:-210px;
-    margin-left:490px;
-}
-
-.table2 p{
-    background-color:#353535;
-    cursor:pointer;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:5px;
-    margin-left:5px;
-    padding:20px;
-    width:200px;
-    height:25px;
-}
-
 .combinaison_resultat{
     font-family:'UnifrakturCook', sans-serif;
     display:flex;
     flex-wrap:nowrap;
     font-size:20px;
-    margin-top:25px;
-    margin-left:245px;
-}
-
-.combinaison_resultat p{
     background-color:#353535;
     cursor:default;
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-bottom:5px;
-    margin-left:5px;
     padding:20px;
     width:200px;
     height:25px;
 }
 
-.actions_defis{
+#bloc_gauche .actions_defis{
     font-family:'UnifrakturCook', sans-serif;
     font-size:20px;
-    margin-top:-390px;
-    margin-left:760px;
-}
-
-.actions_defis p{
     background-color:#4682b4;
     cursor:default;
     display:flex;
@@ -275,54 +231,11 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     height:25px;
 }
 
-.table3{
-    font-family:'UnifrakturCook', sans-serif;
-    font-size:20px;
-    margin-top:25px;
-    margin-left:755px;
-}
-
-.table3 p{
-    background-color:#353535;
-    cursor:pointer;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:5px;
-    margin-left:5px;
-    padding:20px;
-    width:200px;
-    height:25px;
-}
-
-.bevue{
-    font-family:'UnifrakturCook', sans-serif;
-    font-size:20px;
-    margin-top:25px;
-    margin-left:755px;
-}
-
-.bevue p{
-    background-color:#353535;
-    cursor:default;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:5px;
-    margin-left:5px;
-    padding:20px;
-    width:200px;
-    height:25px;
-}
-
 .total{
     font-family:'UnifrakturCook', sans-serif;
     font-size:20px;
-    margin-top:-390px;
-    margin-left:1025px;
-}
-
-.total p{
+    /*margin-top:-390px;*/
+    /*margin-left:1025px;*/
     background-color:#9b443f;
     cursor:default;
     display:flex;
@@ -336,19 +249,32 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 .total_score{
     font-family:'UnifrakturCook', sans-serif;
     font-size:20px;
-    margin-top:25px;
-    margin-left:1020px;
-}
-
-.total_score p{
     background-color:#353535;
     cursor:default; 
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-bottom:5px;
-    margin-left:5px;
     padding:20px;
     width:100px;
     height:255px;
+}
+
+#tableau{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-content:flex-start;
+    margin:auto;
+    width:50vw;
+
+    background-color: #4682b4;
+}
+
+#bloc_gauche{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+    align-content:flex-start;
+    width:80%;
+    gap:3px 5px;
 }

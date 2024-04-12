@@ -12,12 +12,14 @@ window.onload = function(){
 
 let total = 0;
 let stage = 0;
+let dés=[];
 
 function RandomDice(){
 return Math.ceil(Math.random() * 6);
 }
 
 function LaunchDices(){
+    //alert();
     switch(stage){
         case 0:
             ResetDice();
@@ -25,13 +27,14 @@ function LaunchDices(){
             document.getElementById("launch").innerHTML = "Lancer les chouettes";
         break;
         case 1:
-            LaunchDice1();
-            LaunchDice2();
+            dés[0]=LaunchDice(1);
+            dés[1]=LaunchDice(2);
             stage = 2;
             document.getElementById("launch").innerHTML = "Lancer le cul";
         break;
         case 2:
-            LaunchDice3();
+            dés[2]=LaunchDice(3);
+            Verif();
             stage = 3;
             document.getElementById("launch").innerHTML = "Jet suivant";
         break;
@@ -54,35 +57,17 @@ function LaunchDices(){
     }
 }
 
-function LaunchDice1(){
+function LaunchDice(num){
     //Récupère une valeur aléatoire pour les chouettes à partir de la fonction RandomDice
-    let dice1 = RandomDice();
+    let dice = RandomDice();
     
     //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
-    document.getElementById("Dé1").src = "assets/images/dice" + dice1 + ".png";
+    document.getElementById("Dé"+num).src = "assets/images/dice" + dice + ".png";
+    return dice;
 }
 
-function LaunchDice2(){
-  //Récupère une valeur aléatoire pour les chouettes à partir de la fonction RandomDice
-  let dice2 = RandomDice();
-  
-  //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
-  document.getElementById("Dé2").src = "assets/images/dice" + dice2 + ".png";
-}
-
-function LaunchDice3(){
-    //Récupère une valeur aléatoire pour le cul à partir de la fonction RandomDice
-    let dice3 = RandomDice();
-
-    //Utilise la valeur récupérée par le cul pour le transposer au travers de l'image d'un dé
-    document.getElementById("Dé3").src = "assets/images/dice" + dice3 + ".png";
-
-    //Récupère les valeurs des chouettes initialisées localement dans une autre fonction ainsi que la valeur du cul
-    let comb = combination(
-        parseInt(document.getElementById("Dé1").src.substr(-5, 1)),
-        parseInt(document.getElementById("Dé2").src.substr(-5, 1)),
-        dice3
-    );
+function Verif(){
+    let comb = combination(dés[0],dés[1],dés[2]);
 
     //Vérifie qu'une combinaison fait gagner des points et affiche ces points et la combinaison réalisée ainsi qu'un changement de couleur
     if(comb.value !== undefined){
