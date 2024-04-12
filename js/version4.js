@@ -18,110 +18,102 @@ return Math.ceil(Math.random() * 6);
 }
 
 function LaunchDices(){
-  switch(stage){
-      case 0:
-          ResetDice();
-          stage = 1;
-          document.getElementById("launch").innerHTML = "Lancer les chouettes";
-      break;
-      case 1:
-          LaunchDice1();
-          LaunchDice2();
-          stage = 2;
-          document.getElementById("launch").innerHTML = "Lancer le cul";
-      break;
-      case 2:
-          LaunchDice3();
-          stage = 3;
-          document.getElementById("launch").innerHTML = "Jet suivant";
-      break;
-      case 3:
-          ResetDice();
-          if(total < 343){
-              stage = 1;
-              document.getElementById("launch").innerHTML = "Lancer les chouettes";
-          }else{
-              document.getElementById("launch").innerHTML = "Vous avez gagné la partie !";
-              document.getElementById("total").innerHTML = "0";
-              setTimeout(() =>{
-                  stage = 0;
-                  total = 0;
-                  document.getElementById("launch").innerHTML = "Commencer une partie";
-                  document.getElementById("total").innerHTML = "0";
-              }, 2000);
-          }
-      break;
-  }
+    switch(stage){
+        case 0:
+            ResetDice();
+            stage = 1;
+            document.getElementById("launch").innerHTML = "Lancer les chouettes";
+        break;
+        case 1:
+            LaunchDice1();
+            LaunchDice2();
+            stage = 2;
+            document.getElementById("launch").innerHTML = "Lancer le cul";
+        break;
+        case 2:
+            LaunchDice3();
+            stage = 3;
+            document.getElementById("launch").innerHTML = "Jet suivant";
+        break;
+        case 3:
+            ResetDice();
+            if(total < 343){
+                stage = 1;
+                document.getElementById("launch").innerHTML = "Lancer les chouettes";
+            }else{
+                document.getElementById("launch").innerHTML = "Vous avez gagné la partie !";
+                document.getElementById("total").innerHTML = "0";
+                setTimeout(() =>{
+                    stage = 0;
+                    total = 0;
+                    document.getElementById("launch").innerHTML = "Commencer une partie";
+                    document.getElementById("total").innerHTML = "0";
+                }, 2000);
+            }
+        break;
+    }
 }
 
 function LaunchDice1(){
-  //Récupère une valeur aléatoire pour le dé 1 à partir de la fonction RandomDice
-  let dice1 = RandomDice();
-
-  //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
-  document.getElementById("Dé1").src = "assets/images/dice" + dice1 + ".png";
+    //Récupère une valeur aléatoire pour les chouettes à partir de la fonction RandomDice
+    let dice1 = RandomDice();
+    
+    //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
+    document.getElementById("Dé1").src = "assets/images/dice" + dice1 + ".png";
 }
 
 function LaunchDice2(){
-  //Récupère une valeur aléatoire pour le dé 2 à partir de la fonction RandomDice
+  //Récupère une valeur aléatoire pour les chouettes à partir de la fonction RandomDice
   let dice2 = RandomDice();
-
-  //Utilise les valeurs récupérées par les dés 1 et 2 pour les transposer au travers d'images de dés
+  
+  //Utilise les valeurs récupérées par les chouettes pour les transposer au travers d'images de dés
   document.getElementById("Dé2").src = "assets/images/dice" + dice2 + ".png";
 }
 
 function LaunchDice3(){
-  let resultatCombinaison = document.getElementById("RealizedCombination");
-  let dice3 = RandomDice();
-  let comb = combinaison(parseInt(document.getElementById("Dé1").src.substr(-5, 1)),parseInt(document.getElementById("Dé2").src.substr(-5, 1)),dice3);
-  let diceImage3 = document.getElementById("Dé3");
-  
-  diceImage3.src = "assets/images/dice" + dice3 + ".png";
+    //Récupère une valeur aléatoire pour le cul à partir de la fonction RandomDice
+    let dice3 = RandomDice();
 
-  // Rendre les blocs correspondants cliquables
-  let combBlocks = document.querySelectorAll(".comb");
-  combBlocks.forEach(block => {
-      block.classList.add("clickable");
-      block.onclick = function() {
-          if (comb.id === parseInt(block.id.replace("comb", ""))) {
-              // Si l'utilisateur clique sur le bon bloc, ajoutez les points correspondants
-              resultatCombinaison.innerHTML = `+ ${comb.score} points`;
-              total += comb.score;
-              document.getElementById("total").innerHTML = `Total : ${total} points`;
-          }
-      };
-  });
+    //Utilise la valeur récupérée par le cul pour le transposer au travers de l'image d'un dé
+    document.getElementById("Dé3").src = "assets/images/dice" + dice3 + ".png";
 
-  // Réinitialiser la couleur de tous les blocs
-  let resetComb = document.querySelectorAll(".comb");
-  resetComb.forEach(element => {element.style.backgroundColor = "#353535";});
-  
-  // Mettre en surbrillance la combinaison réalisée
-  document.getElementById("comb"+comb.id).style.backgroundColor = '#6f9457';
- 
-  if(comb.value !== undefined){
-      resultatCombinaison.innerHTML = `+ ${comb.score} points`;
-      total += comb.score;      
-  } else {
-      resultatCombinaison.innerHTML = '';
-  }
+    //Récupère les valeurs des chouettes initialisées localement dans une autre fonction ainsi que la valeur du cul
+    let comb = combination(
+        parseInt(document.getElementById("Dé1").src.substr(-5, 1)),
+        parseInt(document.getElementById("Dé2").src.substr(-5, 1)),
+        dice3
+    );
 
-  let scoreElement = document.getElementById("points" + comb.id);
-  scoreElement.innerHTML = `+ ${comb.score} points`;
-  document.getElementById("total").innerHTML = `Total : ${total} points`;
+    //Vérifie qu'une combinaison fait gagner des points et affiche ces points et la combinaison réalisée ainsi qu'un changement de couleur
+    if(comb.value !== undefined){
+        total += comb.score;
+        document.getElementById("combination").innerHTML = `${comb.name} de ${comb.value}`;
+        document.getElementById("combination").style.backgroundColor = '#dda148';
+        document.getElementById("points").innerHTML = `+ ${comb.score}`;
+        document.getElementById("points").style.backgroundColor = '#9b443f';
+    }else{
+        //Sinon, affiche la combinaison réalisée ainsi qu'un changement de couleur mais n'affiche rien pour le nombre de points
+        document.getElementById("combination").innerHTML = `${comb.name}`;
+        document.getElementById("combination").style.backgroundColor = '#dda148';
+        document.getElementById("points").innerHTML = ``;
+        document.getElementById("points").style.backgroundColor = '';
+    }
+
+    //Affiche le score total
+    document.getElementById("total").innerHTML = `${total}`;
 }
 
 function ResetDice(){
-  //Réinitialise la valeur des trois dés en affichant des dés vierges
-  document.getElementById("Dé1").src = "assets/images/empty.png";
-  document.getElementById("Dé2").src = "assets/images/empty.png";
-  document.getElementById("Dé3").src = "assets/images/empty.png";
+    //Réinitialise la valeur des trois dés en affichant des dés vierges
+    document.getElementById("Dé1").src = "assets/images/empty.png";
+    document.getElementById("Dé2").src = "assets/images/empty.png";
+    document.getElementById("Dé3").src = "assets/images/empty.png";
 
-  //Affiche des blocs vierges pour la combinaison effectuée et les points gagnés et réinitialise la couleur
-  document.getElementById("combination").innerHTML = ``;
-  document.getElementById("combination").style.backgroundColor = '';
-  document.getElementById("points").innerHTML = ``;
-  document.getElementById("points").style.backgroundColor = '';
+    //Affiche des blocs vierges pour la combinaison effectuée et les points gagnés et réinitialise la couleur
+    document.getElementById("combination").innerHTML = ``;
+    document.getElementById("combination").style.backgroundColor = '';
+    document.getElementById("points").innerHTML = ``;
+    document.getElementById("points").style.backgroundColor = '';
 }
 
 /*************************************
