@@ -179,6 +179,17 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     margin-top:10px;
 }
 
+#block{
+    color:#FFFFFF;
+    background-color: #dda148;
+    font-family:'UnifrakturCook', sans-serif;
+    border:none;
+    display:flex;
+    font-size:20px;
+    width:280px;
+    height:50px;
+}
+
 #table{
     display:flex;
     flex-wrap:nowrap;
@@ -197,7 +208,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     gap:5px;
 }
 
-#block_left .combinations, #block_left div, #block_middle .actions, #block_middle div, #block_right .total, #block_right div{
+#block_left .combinations, #block, #block_middle .actions, #block_right .total, #block_right div{
     font-family:'UnifrakturCook', sans-serif;
     cursor:default;
     display:flex;

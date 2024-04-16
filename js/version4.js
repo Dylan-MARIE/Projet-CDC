@@ -2,9 +2,7 @@
 ******** INTERFACE
 *************************************/
 
-window.onload = function(){
-  window.location.href = "#cul-de-chouette";
-};
+window.onload = function(){window.location.href = "#cul-de-chouette";};
 
 /*************************************
 ******** WEB
@@ -14,72 +12,111 @@ let total = 0;
 let stage = 0;
 let dés=[];
 
-function RandomDice(){
-return Math.ceil(Math.random() * 6);
-}
+let isTurnOver = false; // Variable pour indiquer si le tour est terminé
 
 function LaunchDices(){
-    switch(stage){
+    switch (stage) {
         case 0:
             ResetDice();
             stage = 1;
             document.getElementById("start").innerHTML = "Lancer les chouettes";
-        break;
+            break;
         case 1:
             dés[0] = LaunchDice(1);
             dés[1] = LaunchDice(2);
             stage = 2;
             document.getElementById("start").innerHTML = "Lancer le cul";
-        break;
+            break;
         case 2:
             dés[2] = LaunchDice(3);
-            Check();
             stage = 3;
             document.getElementById("start").innerHTML = "Jet suivant";
-        break;
+            break;
         case 3:
+            // Vérifier si une combinaison a été sélectionnée
+            if (!isCombinationSelected()) {
+                alert("Veuillez sélectionner une combinaison avant de passer au jet suivant.");
+                return;
+            }
             ResetDice();
-            if(total < 343){
+            // Réinitialiser les boutons de combinaison
+            enableButtons();
+            // Autoriser le lancer des dés à nouveau
+            isTurnOver = false;
+            if (total < 343) {
                 stage = 1;
                 document.getElementById("start").innerHTML = "Lancer les chouettes";
-            }else{
+            } else {
                 document.getElementById("start").innerHTML = "Vous avez gagné la partie !";
                 document.getElementById("total").innerHTML = "0";
-                setTimeout(() =>{
+                setTimeout(() => {
                     stage = 0;
                     total = 0;
                     document.getElementById("start").innerHTML = "Commencer une partie";
                     document.getElementById("total").innerHTML = "0";
                 }, 2000);
             }
-        break;
+            break;
     }
 }
 
 function LaunchDice(number){
+    function RandomDice(){return Math.ceil(Math.random() * 6);}
     let dice = RandomDice();
     document.getElementById("Dé"+number).src = "assets/images/dice" + dice + ".png";
     return dice;
 }
 
-function Check(){
-    let comb = combination(dés[0],dés[1],dés[2]);
+function SelectCombination(combinaison) {
+    // Vérifier si le tour est terminé
+    if (isTurnOver) {
+        return;
+    }
+    
+    // Vérifier si la combinaison sélectionnée correspond aux dés lancés
+    let comb = combination(dés[0], dés[1], dés[2]);
 
-    //Vérifie qu'une combinaison fait gagner des points et affiche ces points et la combinaison réalisée ainsi qu'un changement de couleur
-    if(comb.value !== undefined){
-        total += comb.score;
+    if (combinaison === comb.name) {
+        // Si la combinaison est correcte, afficher les valeurs correspondantes
         document.getElementById("combination").innerHTML = `${comb.name} de ${comb.value}`;
         document.getElementById("combination").style.backgroundColor = '#dda148';
         document.getElementById("points").innerHTML = `+ ${comb.score}`;
-        document.getElementById("points").style.backgroundColor = '#9b443f';
-    }else{
-        //Sinon, affiche la combinaison réalisée ainsi qu'un changement de couleur mais n'affiche rien pour le nombre de points
-        document.getElementById("combination").innerHTML = `${comb.name}`;
-        document.getElementById("combination").style.backgroundColor = '#dda148';
-        document.getElementById("points").innerHTML = ``;
-        document.getElementById("points").style.backgroundColor = '';
+        document.getElementById("points").style.backgroundColor = '#dda148';
+        total += comb.score; // Ajouter les points au score total
+        document.getElementById("total").innerHTML = total;
+    } else {
+        // Si la combinaison est incorrecte, changer la couleur de la case Bévue et réduire le score total
+        document.getElementById("bévue").style.backgroundColor = "#ff0000";
+        total -= 5;
+        document.getElementById("total").innerHTML = total;
     }
-    document.getElementById("total").innerHTML = `${total}`;
+    
+    // Désactiver les boutons de combinaison pour empêcher les clics supplémentaires
+    disableButtons();
+    // Marquer la fin du tour
+    isTurnOver = true;
+}
+
+function disableButtons() {
+    // Désactiver tous les boutons de combinaison
+    let buttons = document.querySelectorAll('.combinations button');
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+}
+
+function enableButtons() {
+    // Activer tous les boutons de combinaison
+    let buttons = document.querySelectorAll('.combinations button');
+    buttons.forEach(button => {
+        button.disabled = false;
+    });
+}
+
+function isCombinationSelected() {
+    // Vérifier si une combinaison a été sélectionnée en vérifiant si la case Combination est vide
+    let combination = document.getElementById("combination").innerHTML.trim();
+    return combination !== "";
 }
 
 function ResetDice(){
