@@ -209,7 +209,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     padding:20px;
 }
 
-#block{
+.block{
     font-family:'UnifrakturCook', sans-serif;
     cursor:default;
     font-size:20px;

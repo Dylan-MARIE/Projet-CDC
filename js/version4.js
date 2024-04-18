@@ -8,12 +8,32 @@ window.onload = function(){window.location.href = "#cul-de-chouette";};
 ******** WEB
 *************************************/
 
+// ############# VARIABLES
 let total = 0;
 let stage = 0;
 let dés=[];
 
-let isTurnOver = false; // Variable pour indiquer si le tour est terminé
+// ############## ECOUTEURS
+let block = document.querySelectorAll(".block");
 
+function blockDisable(){
+    alert("fonctionne");
+    block.forEach(function (item) {
+        alert(item.innerHTML);
+        item.removeEventListener('click',SelectCombination);
+    });
+}
+
+block.forEach(function (item) {
+    //alert(item.innerHTML);
+    item.addEventListener('click', function(){
+        SelectCombination(item.innerHTML);
+    });
+        //alert('Vous avez cliqué sur '+item.innerHTML);
+
+});
+
+// ############## FONCTIONS
 function LaunchDices(){
     switch (stage) {
         case 0:
@@ -33,11 +53,6 @@ function LaunchDices(){
             document.getElementById("start").innerHTML = "Jet suivant";
             break;
         case 3:
-            // Vérifier si une combinaison a été sélectionnée
-            if (!isCombinationSelected()) {
-                alert("Veuillez sélectionner une combinaison avant de passer au jet suivant.");
-                return;
-            }
             ResetDice();
             // Réinitialiser les boutons de combinaison
             enableButtons();
@@ -68,11 +83,7 @@ function LaunchDice(number){
 }
 
 function SelectCombination(combinaison) {
-    // Vérifier si le tour est terminé
-    if (isTurnOver) {
-        return;
-    }
-    
+
     // Vérifier si la combinaison sélectionnée correspond aux dés lancés
     let comb = combination(dés[0], dés[1], dés[2]);
 
@@ -90,33 +101,7 @@ function SelectCombination(combinaison) {
         total -= 5;
         document.getElementById("total").innerHTML = total;
     }
-    
-    // Désactiver les boutons de combinaison pour empêcher les clics supplémentaires
-    disableButtons();
-    // Marquer la fin du tour
-    isTurnOver = true;
-}
-
-function disableButtons() {
-    // Désactiver tous les boutons de combinaison
-    let buttons = document.querySelectorAll('.combinations button');
-    buttons.forEach(button => {
-        button.disabled = true;
-    });
-}
-
-function enableButtons() {
-    // Activer tous les boutons de combinaison
-    let buttons = document.querySelectorAll('.combinations button');
-    buttons.forEach(button => {
-        button.disabled = false;
-    });
-}
-
-function isCombinationSelected() {
-    // Vérifier si une combinaison a été sélectionnée en vérifiant si la case Combination est vide
-    let combination = document.getElementById("combination").innerHTML.trim();
-    return combination !== "";
+    blockDisable();
 }
 
 function ResetDice(){
