@@ -16,22 +16,28 @@ let dés=[];
 // ############## ECOUTEURS
 let block = document.querySelectorAll(".block");
 
-function blockDisable(){
-    alert("fonctionne");
-    block.forEach(function (item) {
-        alert(item.innerHTML);
-        item.removeEventListener('click',SelectCombination);
-    });
-}
-
 block.forEach(function (item) {
-    //alert(item.innerHTML);
     item.addEventListener('click', function(){
         SelectCombination(item.innerHTML);
     });
-        //alert('Vous avez cliqué sur '+item.innerHTML);
-
 });
+
+let clickHandler = function(event) {
+    SelectCombination(event.target.innerHTML);
+};
+
+// Ajoutez l'écouteur d'événements en utilisant la fonction définie précédemment
+block.forEach(function(item) {
+    item.addEventListener('click', clickHandler);
+});
+
+// Fonction pour désactiver les clics sur les blocs
+function blockDisable() {
+    // Supprimez l'écouteur d'événements de chaque bloc en utilisant la même fonction
+    block.forEach(function (item) {
+        item.removeEventListener('click', clickHandler);
+    });
+}
 
 // ############## FONCTIONS
 function LaunchDices(){
@@ -54,10 +60,6 @@ function LaunchDices(){
             break;
         case 3:
             ResetDice();
-            // Réinitialiser les boutons de combinaison
-            enableButtons();
-            // Autoriser le lancer des dés à nouveau
-            isTurnOver = false;
             if (total < 343) {
                 stage = 1;
                 document.getElementById("start").innerHTML = "Lancer les chouettes";

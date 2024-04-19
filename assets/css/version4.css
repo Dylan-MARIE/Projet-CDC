@@ -183,7 +183,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     display:flex;
     flex-wrap:nowrap;
     margin:auto;
-    width:60vw;
+    width:50vw;
     margin-top:20px;
 }
 
@@ -192,13 +192,12 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     flex-wrap:wrap;
     justify-content:flex-start;
     align-content:flex-start;
-    width:50%;
+    width:60%;
     margin-right:20px;
     gap:5px;
-    background-color:#aca9e2;
 }
 
-#block_left .combinations, #block_middle .actions, #block_right .total, #block_right div, .block_bottom{
+#block_left .combinations, #block_left div, #block_middle .actions, #block_middle div, #block_right .total, #block_right div{
     font-family:'UnifrakturCook', sans-serif;
     cursor:default;
     display:flex;
@@ -209,25 +208,13 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     padding:20px;
 }
 
-.block{
-    font-family:'UnifrakturCook', sans-serif;
-    cursor:default;
-    font-size:20px;
-    height:60px;
-    width:240px;
-    padding:20px;
-    border:none;
-    background-color: #353535;
-    color:#FFFFFF;
-}
-
-#block_left .combinations{background-color:#dda148; width:480px; margin-bottom:15px;}
+#block_left .combinations{background-color:#dda148; width:445px; margin-bottom:15px;}
 #block_left div{background-color:#353535; width:200px;}
 
 #block_middle .actions{background-color:#4682b4; width:200px; margin-bottom:15px;}
 #block_middle div{background-color: #353535; width:200px;}
 
-#block_right .total{background-color:#9b443f; width:110px; margin-bottom:15px;}
-#block_right div{background-color:#353535; width:110px; height:235px;}
+#block_right .total{background-color:#9b443f; width:100px; margin-bottom:15px;}
+#block_right div{background-color:#353535; width:100px; height:250px;}
 
 .block_bottom{margin-top:15px;}
