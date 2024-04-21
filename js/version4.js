@@ -8,40 +8,31 @@ window.onload = function(){window.location.href = "#cul-de-chouette";};
 ******** WEB
 *************************************/
 
-// ############# VARIABLES
 let total = 0;
 let stage = 0;
 let dés=[];
 
-// ############## ECOUTEURS
 let block = document.querySelectorAll(".block");
 
-block.forEach(function (item) {
+block.forEach(function (item){
     item.addEventListener('click', function(){
         SelectCombination(item.innerHTML);
     });
 });
 
-let clickHandler = function(event) {
-    SelectCombination(event.target.innerHTML);
-};
-
-// Ajoutez l'écouteur d'événements en utilisant la fonction définie précédemment
-block.forEach(function(item) {
+block.forEach(function(item){
     item.addEventListener('click', clickHandler);
 });
 
-// Fonction pour désactiver les clics sur les blocs
-function blockDisable() {
-    // Supprimez l'écouteur d'événements de chaque bloc en utilisant la même fonction
-    block.forEach(function (item) {
+
+function blockDisable(){
+    block.forEach(function (item){
         item.removeEventListener('click', clickHandler);
     });
 }
 
-// ############## FONCTIONS
 function LaunchDices(){
-    switch (stage) {
+    switch (stage){
         case 0:
             ResetDice();
             stage = 1;
@@ -60,13 +51,13 @@ function LaunchDices(){
             break;
         case 3:
             ResetDice();
-            if (total < 343) {
+            if (total < 343){
                 stage = 1;
                 document.getElementById("start").innerHTML = "Lancer les chouettes";
-            } else {
+            }else{
                 document.getElementById("start").innerHTML = "Vous avez gagné la partie !";
                 document.getElementById("total").innerHTML = "0";
-                setTimeout(() => {
+                setTimeout(()=>{
                     stage = 0;
                     total = 0;
                     document.getElementById("start").innerHTML = "Commencer une partie";
@@ -84,21 +75,17 @@ function LaunchDice(number){
     return dice;
 }
 
-function SelectCombination(combinaison) {
-
-    // Vérifier si la combinaison sélectionnée correspond aux dés lancés
+function SelectCombination(combinaison){
     let comb = combination(dés[0], dés[1], dés[2]);
 
-    if (combinaison === comb.name) {
-        // Si la combinaison est correcte, afficher les valeurs correspondantes
+    if (combinaison === comb.name){
         document.getElementById("combination").innerHTML = `${comb.name} de ${comb.value}`;
-        document.getElementById("combination").style.backgroundColor = '#dda148';
+        document.getElementById("combination").style.backgroundColor = '#606060';
         document.getElementById("points").innerHTML = `+ ${comb.score}`;
-        document.getElementById("points").style.backgroundColor = '#dda148';
-        total += comb.score; // Ajouter les points au score total
+        document.getElementById("points").style.backgroundColor = '#606060';
+        total += comb.score;
         document.getElementById("total").innerHTML = total;
-    } else {
-        // Si la combinaison est incorrecte, changer la couleur de la case Bévue et réduire le score total
+    } else{
         document.getElementById("bévue").style.backgroundColor = "#ff0000";
         total -= 5;
         document.getElementById("total").innerHTML = total;
@@ -107,12 +94,10 @@ function SelectCombination(combinaison) {
 }
 
 function ResetDice(){
-    //Réinitialise la valeur des trois dés en affichant des dés vierges
     document.getElementById("Dé1").src = "assets/images/dice0.png";
     document.getElementById("Dé2").src = "assets/images/dice0.png";
     document.getElementById("Dé3").src = "assets/images/dice0.png";
 
-    //Affiche des blocs vierges pour la combinaison effectuée et les points gagnés et réinitialise la couleur
     document.getElementById("combination").innerHTML = ``;
     document.getElementById("combination").style.backgroundColor = '';
     document.getElementById("points").innerHTML = ``;

@@ -156,14 +156,9 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 *********** CUL DE CHOUETTE
 **************************************************************/
 
-.dices{
-    text-align:center;
-}
+.dices{text-align:center; user-select:none;}
 
-.dices img{
-    width:90px;
-    margin-top:2px;
-}
+.dices img{width:90px; margin-top:2px;}
 
 #start{
     color:#FFFFFF;
@@ -173,6 +168,7 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     cursor:pointer;
     border:none;
     margin:auto;
+    user-select:none;
     font-size:20px;
     width:350px;
     padding:20px;
@@ -183,7 +179,8 @@ section:nth-child(7) h1{background-color:#aca9e2;}
     display:flex;
     flex-wrap:nowrap;
     margin:auto;
-    width:50vw;
+    user-select:none;
+    width:60vw;
     margin-top:20px;
 }
 
@@ -199,7 +196,6 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 
 #block_left .combinations, #block_left div, #block_middle .actions, #block_middle div, #block_right .total, #block_right div{
     font-family:'UnifrakturCook', sans-serif;
-    cursor:default;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -218,3 +214,20 @@ section:nth-child(7) h1{background-color:#aca9e2;}
 #block_right div{background-color:#353535; width:100px; height:250px;}
 
 .block_bottom{margin-top:15px;}
+
+.block:hover{--_p: 75%;}
+
+.block{
+    cursor:pointer;
+    --b:1px;
+    --c:#626262;
+    padding:calc(var(--g) + var(--b));
+    --_c:#353535 0% 25%, var(--c) 0% 50%;
+    --_g1:repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2:repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+        var(--_g1) var(--_p, 25%) 0%, var(--_g2) 0% var(--_p,125%),
+        var(--_g1) var(--_p,125%) 100%, var(--_g2) 100% var(--_p, 25%);
+    background-size:200% var(--b),var(--b) 200%;
+    transition:0.75s;
+}
