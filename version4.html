@@ -43,28 +43,25 @@
             <img id="Dé2" src="assets/images/dice0.png" alt="Dé 2">
             <img id="Dé3" src="assets/images/dice0.png" alt="Dé 3">
         </div>
-        <div><button id="start" onclick="LaunchDices()">Commencer une partie</button>
-            <div id="confetti-container">
-                <!-- Contenu du conteneur de confettis -->
-              </div></div>
+        <div><button id="start" onclick="LaunchDices()">Commencer une partie</button></div>
         <div id="table">
             <div id="block_left">
                 <div class="combinations">Combinaisons</div>
-                <div class="block">Chouette</div>
+                <div class="block" id="chou">Chouette</div>
                 <div class="block">Cul de Chouette</div>
                 <div class="block">Velute</div>
                 <div class="block">Suite</div>
                 <div class="block">Chouette-Velute</div>
                 <div class="block">Néant</div>
                 <div class="block_bottom" id="combination"></div>
-                <div class ="block_bottom" id="points"></div>
+                <div class="block_bottom" id="points"></div>
             </div>
             <div id="block_middle">
                 <div class="actions">Actions et défis</div>
                 <div class="block">Sirop</div>
                 <div class="block">Civet</div>
                 <div class="block">Grelottine</div>
-                <div class="block_bottom">Bévue</div>
+                <div class="block_bottom" id="blunder">Bévue</div>
             </div>
             <div id="block_right">
                 <div class="total">Total</div>
@@ -86,7 +83,6 @@
     </div>
 </section>
 
-
 <section id="kaamelott">
     <h1>Kaamelott</h1>
     <div class="contenu-kaamelott">
@@ -96,7 +92,6 @@
 <section id="crédits">
     <h1>Crédits</h1>
     <div class="contenu-crédits">
-
     </div>    
 </section>
 <script src="https://kit.fontawesome.com/9dc810df0d.js" crossorigin="anonymous"></script>

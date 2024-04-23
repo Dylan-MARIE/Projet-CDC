@@ -14,23 +14,6 @@ let dés=[];
 
 let block = document.querySelectorAll(".block");
 
-block.forEach(function (item){
-    item.addEventListener('click', function(){
-        SelectCombination(item.innerHTML);
-    });
-});
-
-block.forEach(function(item){
-    item.addEventListener('click', clickHandler);
-});
-
-
-function blockDisable(){
-    block.forEach(function (item){
-        item.removeEventListener('click', clickHandler);
-    });
-}
-
 function LaunchDices(){
     switch (stage){
         case 0:
@@ -77,31 +60,47 @@ function LaunchDice(number){
 
 function SelectCombination(combinaison){
     let comb = combination(dés[0], dés[1], dés[2]);
-
-    if (combinaison === comb.name){
+    if(combinaison === comb.name && comb.score!==0){
         document.getElementById("combination").innerHTML = `${comb.name} de ${comb.value}`;
         document.getElementById("combination").style.backgroundColor = '#606060';
         document.getElementById("points").innerHTML = `+ ${comb.score}`;
         document.getElementById("points").style.backgroundColor = '#606060';
         total += comb.score;
         document.getElementById("total").innerHTML = total;
-    } else{
-        document.getElementById("bévue").style.backgroundColor = "#ff0000";
+    }else if(combinaison === comb.name && comb.score==0){
+        document.getElementById("combination").innerHTML = `${comb.name}`;
+        document.getElementById("combination").style.backgroundColor = '#606060';
+    }else{
+        document.getElementById("points").innerHTML = `-5`;
+        document.getElementById("points").style.backgroundColor = '#606060';
+        document.getElementById("blunder").style.backgroundColor = '#4682b4';
         total -= 5;
         document.getElementById("total").innerHTML = total;
     }
-    blockDisable();
+    BlockDisable();
 }
 
 function ResetDice(){
     document.getElementById("Dé1").src = "assets/images/dice0.png";
     document.getElementById("Dé2").src = "assets/images/dice0.png";
     document.getElementById("Dé3").src = "assets/images/dice0.png";
-
-    document.getElementById("combination").innerHTML = ``;
+    document.getElementById("combination").innerHTML = '';
     document.getElementById("combination").style.backgroundColor = '';
-    document.getElementById("points").innerHTML = ``;
+    document.getElementById("points").innerHTML = '';
     document.getElementById("points").style.backgroundColor = '';
+    document.getElementById("blunder").style.backgroundColor = '';
+}
+
+block.forEach(function (item){
+    item.addEventListener('click', function(){
+        SelectCombination(item.innerHTML);
+    });
+});
+
+function BlockDisable(){
+    block.forEach(function (item){
+        item.removeEventListener('click');
+    });
 }
 
 /*************************************
