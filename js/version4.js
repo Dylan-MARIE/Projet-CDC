@@ -10,12 +10,12 @@ window.onload = function(){window.location.href = "#cul-de-chouette";};
 
 let total = 0;
 let stage = 0;
-let dés=[];
+let dés = [];
 
 let block = document.querySelectorAll(".block");
 
 function LaunchDices(){
-    switch (stage){
+    switch (stage) {
         case 0:
             ResetDice();
             stage = 1;
@@ -26,11 +26,13 @@ function LaunchDices(){
             dés[1] = LaunchDice(2);
             stage = 2;
             document.getElementById("start").innerHTML = "Lancer le cul";
+            BlockDisable();
             break;
         case 2:
             dés[2] = LaunchDice(3);
             stage = 3;
             document.getElementById("start").innerHTML = "Jet suivant";
+            BlockEnable();
             break;
         case 3:
             ResetDice();
@@ -40,7 +42,7 @@ function LaunchDices(){
             }else{
                 document.getElementById("start").innerHTML = "Vous avez gagné la partie !";
                 document.getElementById("total").innerHTML = "0";
-                setTimeout(()=>{
+                setTimeout(() => {
                     stage = 0;
                     total = 0;
                     document.getElementById("start").innerHTML = "Commencer une partie";
@@ -52,22 +54,24 @@ function LaunchDices(){
 }
 
 function LaunchDice(number){
-    function RandomDice(){return Math.ceil(Math.random() * 6);}
+    function RandomDice(){
+        return Math.ceil(Math.random() * 6);
+    }
     let dice = RandomDice();
-    document.getElementById("Dé"+number).src = "assets/images/dice" + dice + ".png";
+    document.getElementById("Dé" + number).src = "assets/images/dice" + dice + ".png";
     return dice;
 }
 
 function SelectCombination(combinaison){
     let comb = combination(dés[0], dés[1], dés[2]);
-    if(combinaison === comb.name && comb.score!==0){
+    if (combinaison === comb.name && comb.score !== 0){
         document.getElementById("combination").innerHTML = `${comb.name} de ${comb.value}`;
         document.getElementById("combination").style.backgroundColor = '#606060';
         document.getElementById("points").innerHTML = `+ ${comb.score}`;
         document.getElementById("points").style.backgroundColor = '#606060';
         total += comb.score;
         document.getElementById("total").innerHTML = total;
-    }else if(combinaison === comb.name && comb.score==0){
+    }else if(combinaison === comb.name && comb.score == 0){
         document.getElementById("combination").innerHTML = `${comb.name}`;
         document.getElementById("combination").style.backgroundColor = '#606060';
     }else{
@@ -91,15 +95,23 @@ function ResetDice(){
     document.getElementById("blunder").style.backgroundColor = '';
 }
 
+let Held = function(event){
+    SelectCombination(event.target.innerHTML);
+};
+
 block.forEach(function (item){
-    item.addEventListener('click', function(){
-        SelectCombination(item.innerHTML);
-    });
+    item.addEventListener('click', Held);
 });
 
 function BlockDisable(){
     block.forEach(function (item){
-        item.removeEventListener('click');
+        item.removeEventListener('click', Held);
+    });
+}
+
+function BlockEnable(){
+    block.forEach(function (item){
+        item.addEventListener('click', Held);
     });
 }
 
